@@ -1,7 +1,22 @@
 import "./style.css";
-
+import React, { useState, useEffect } from "react";
 export default function Home({ addLike }) {
-  // Create an array to store stock data
+  const [stock, setStocks] = useState([]);
+
+  useEffect(() => {
+    const url = "https://apiconnect.angelbroking.com";
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   const stockData = [
     {
       stockCode: "TCS",
@@ -60,34 +75,33 @@ export default function Home({ addLike }) {
       name: "Reliance",
       image: "/images/reliance.png",
       price: "Rs.1500",
-      change: "-7.70%"
+      change: "-7.70%",
     },
     {
       name: "Zomato",
       image: "/images/zomato.png",
       price: "Rs.1500",
-      change: "-7.70%"
+      change: "-7.70%",
     },
     {
       name: "TATA",
       image: "/images/tata.png",
       price: "Rs.1500",
-      change: "-7.70%"
+      change: "-7.70%",
     },
     {
       name: "Adani",
       image: "/images/adani.png",
       price: "Rs.1500",
-      change: "-7.70%"
+      change: "-7.70%",
     },
     {
       name: "MRF",
       image: "/images/mrf.png",
       price: "Rs.1500",
-      change: "-7.70%"
-    }
+      change: "-7.70%",
+    },
   ];
-  
 
   return (
     <>
@@ -122,35 +136,43 @@ export default function Home({ addLike }) {
               .map((stock, index) => (
                 <>
                   <a key={index}>
-                   <div style={{display:"flex" ,justifyContent: "space-between"}}>
-                    <div className="stock-summary" style={{ flex: 30 }}>
-                      <div className="stock-code">
-                        <p>{stock.stockCode}</p>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div className="stock-summary" style={{ flex: 30 }}>
+                        <div className="stock-code">
+                          <p>{stock.stockCode}</p>
+                        </div>
+                        <div className="stock-variation">
+                          <p>{stock.stockVariation}</p>
+                        </div>
+                        <div className="stock-price">
+                          <p>{stock.stockPrice}</p>
+                        </div>
                       </div>
-                      <div className="stock-variation">
-                        <p>{stock.stockVariation}</p>
-                      </div>
-                      <div className="stock-price">
-                        <p>{stock.stockPrice}</p>
+                      <div style={{ flex: 1 }}>
+                        <button
+                          style={{
+                            border: "none", // Remove border
+                            background: "none", // Remove background color
+                            color: "inherit", // Inherit text color
+                            padding: 0, // Remove padding
+                            font: "inherit", // Inherit font properties
+                            cursor: "pointer", // Add pointer cursor
+                            marginLeft: "8px",
+                          }}
+                          onClick={() => addLike(stock)}
+                        >
+                          <ion-icon
+                            name="heart"
+                            style={{ color: "var(--white)" }}
+                          ></ion-icon>
+                        </button>
                       </div>
                     </div>
-                    <div style={{ flex: 1 }}>
-                    <button
-                        style={{
-                          border: "none", // Remove border
-                          background: "none", // Remove background color
-                          color: "inherit", // Inherit text color
-                          padding: 0, // Remove padding
-                          font: "inherit", // Inherit font properties
-                          cursor: "pointer", // Add pointer cursor
-                          marginLeft:"8px"
-                        }}
-                        onClick={() => addLike(stock)}
-                      >
-                       <ion-icon name="heart" style={{color: "var(--white)"}}></ion-icon>
-                      </button>
-                      </div>
-                      </div>
                   </a>
                 </>
               ))}
@@ -166,64 +188,73 @@ export default function Home({ addLike }) {
               .map((stock, index) => (
                 <>
                   <a key={index}>
-                   <div style={{display:"flex" ,justifyContent: "space-between"}}>
-                    <div className="stock-summary" style={{ flex: 30 }}>
-                      <div className="stock-code">
-                        <p>{stock.stockCode}</p>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div className="stock-summary" style={{ flex: 30 }}>
+                        <div className="stock-code">
+                          <p>{stock.stockCode}</p>
+                        </div>
+                        <div className="stock-variation">
+                          <p>{stock.stockVariation}</p>
+                        </div>
+                        <div className="stock-price">
+                          <p>{stock.stockPrice}</p>
+                        </div>
                       </div>
-                      <div className="stock-variation">
-                        <p>{stock.stockVariation}</p>
-                      </div>
-                      <div className="stock-price">
-                        <p>{stock.stockPrice}</p>
+                      <div style={{ flex: 1 }}>
+                        <button
+                          style={{
+                            border: "none", // Remove border
+                            background: "none", // Remove background color
+                            color: "inherit", // Inherit text color
+                            padding: 0, // Remove padding
+                            font: "inherit", // Inherit font properties
+                            cursor: "pointer", // Add pointer cursor
+                            marginLeft: "8px",
+                          }}
+                          onClick={() => addLike(stock)}
+                        >
+                          <ion-icon
+                            name="heart"
+                            style={{ color: "var(--white)" }}
+                          ></ion-icon>
+                        </button>
                       </div>
                     </div>
-                    <div style={{ flex: 1 }}>
-                    <button
-                        style={{
-                          border: "none", // Remove border
-                          background: "none", // Remove background color
-                          color: "inherit", // Inherit text color
-                          padding: 0, // Remove padding
-                          font: "inherit", // Inherit font properties
-                          cursor: "pointer", // Add pointer cursor
-                          marginLeft:"8px"
-                        }}
-                        onClick={() => addLike(stock)}
-                      >
-                       <ion-icon name="heart" style={{color: "var(--white)"}}></ion-icon>
-                      </button>
-                      </div>
-                      </div>
                   </a>
                 </>
               ))}
           </div>
 
-        
-          <div id="title" style={{marginTop:"20px"}}>
+          <div id="title" style={{ marginTop: "20px" }}>
             <h2>Most Bought on Today</h2>
           </div>
 
           <div id="full-box">
-  <div style={{ display: "flex", padding: "20px" }}>
-    {stocks.map((stock, index) => (
-      <div
-        key={index}
-        style={{ padding: "20px", background: "gray", borderRadius: "10px", marginRight: "20px" }}
-      >
-        <img src={stock.image} width={"80px"} height={"80px"} />
-        <p>{stock.name}</p>
-        <br />
-        <p>price : {stock.price}</p>
-        <p>{stock.change}</p>
-      </div>
-    ))}
-  </div>
-</div>
-
-          
-          
+            <div style={{ display: "flex", padding: "20px" }}>
+              {stocks.map((stock, index) => (
+                <div
+                  key={index}
+                  style={{
+                    padding: "20px",
+                    background: "gray",
+                    borderRadius: "10px",
+                    marginRight: "20px",
+                  }}
+                >
+                  <img src={stock.image} width={"80px"} height={"80px"} />
+                  <p>{stock.name}</p>
+                  <br />
+                  <p>price : {stock.price}</p>
+                  <p>{stock.change}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         <div id="push"></div>
       </div>
