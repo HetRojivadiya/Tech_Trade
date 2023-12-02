@@ -36,6 +36,16 @@ app.get('/news', (req, res) => {
   });
 });
 
+app.get('/fetchData', async (req, res) => {
+  try {
+    const response = await fetch('https://techtrade-indicators-default-rtdb.firebaseio.com/.json');
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

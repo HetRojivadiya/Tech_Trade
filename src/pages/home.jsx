@@ -1,21 +1,9 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
+
 export default function Home({ addLike }) {
   const [stock, setStocks] = useState([]);
 
-  useEffect(() => {
-    const url = "https://apiconnect.angelbroking.com";
-
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  }, []);
 
   const stockData = [
     {
@@ -103,6 +91,10 @@ export default function Home({ addLike }) {
     },
   ];
 
+  const search = ()=>{
+    console.log("haha");
+  }
+
   return (
     <>
       <div id="wrapper">
@@ -117,9 +109,9 @@ export default function Home({ addLike }) {
               type="text"
               placeholder="search"
               id="search-input"
-              onKeyPress="isEnterPressed(event)"
+              
             />
-            <button onClick="search()" id="search-button">
+            <button onClick={search()} id="search-button">
               <ion-icon name="search"></ion-icon>
             </button>
           </div>
@@ -127,9 +119,9 @@ export default function Home({ addLike }) {
 
         <div id="boxes">
           <div id="highest">
-            <h3 class="box-title">
+            <h3 className="box-title">
               <ion-icon name="arrow-up"></ion-icon>
-              Largest Gains
+              Top Gainer
             </h3>
             {stockData
               .filter((stock) => stock.stockVariation.includes("+"))
@@ -179,9 +171,9 @@ export default function Home({ addLike }) {
           </div>
 
           <div id="lowest">
-            <h3 class="box-title">
+            <h3 className="box-title">
               <ion-icon name="arrow-down"></ion-icon>
-              Biggest Drops
+              Top Losser
             </h3>
             {stockData
               .filter((stock) => stock.stockVariation.includes("-"))
