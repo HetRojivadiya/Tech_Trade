@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/HetRojivadiya/Tech_Trade/static/css/main.b26ef420.css",
-    "main.js": "/HetRojivadiya/Tech_Trade/static/js/main.127d279e.js",
-    "static/js/787.a75a0076.chunk.js": "/HetRojivadiya/Tech_Trade/static/js/787.a75a0076.chunk.js",
-    "index.html": "/HetRojivadiya/Tech_Trade/index.html",
-    "main.b26ef420.css.map": "/HetRojivadiya/Tech_Trade/static/css/main.b26ef420.css.map",
-    "main.127d279e.js.map": "/HetRojivadiya/Tech_Trade/static/js/main.127d279e.js.map",
-    "787.a75a0076.chunk.js.map": "/HetRojivadiya/Tech_Trade/static/js/787.a75a0076.chunk.js.map"
+    "main.css": "./static/css/main.b26ef420.css",
+    "main.js": "./static/js/main.b363b79f.js",
+    "static/js/787.a75a0076.chunk.js": "./static/js/787.a75a0076.chunk.js",
+    "index.html": "./index.html",
+    "main.b26ef420.css.map": "./static/css/main.b26ef420.css.map",
+    "main.b363b79f.js.map": "./static/js/main.b363b79f.js.map",
+    "787.a75a0076.chunk.js.map": "./static/js/787.a75a0076.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b26ef420.css",
-    "static/js/main.127d279e.js"
+    "static/js/main.b363b79f.js"
   ]
 }
