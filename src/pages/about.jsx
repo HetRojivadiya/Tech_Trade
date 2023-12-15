@@ -3,6 +3,7 @@ import React from 'react';
 const AboutPage = () => {
   const styles = {
     aboutPage: {
+      width :'85%',
       marginTop: '-600px',
       marginLeft: '190px',
       fontFamily: 'Arial, sans-serif',
@@ -39,7 +40,7 @@ const AboutPage = () => {
   };
 
   const containerStyle = {
-    marginTop: '40px',
+    marginTop: '10px',
     marginLeft :'190px',
     display: 'flex',
     justifyContent: 'space-between',

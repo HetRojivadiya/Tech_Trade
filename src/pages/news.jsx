@@ -5,7 +5,8 @@ const StockNews = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3001/news?search=${searchTerm}`)
+    const PORT = process.env.PORT || 3030;
+    fetch(`https://techtrade.onrender.com/news?search=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => setNews(data))
       .catch((error) => console.log(error));
@@ -62,7 +63,7 @@ const StockNews = () => {
 };
 
 const containerStyle = {
-  marginTop:"20px",
+  marginTop:"80px",
   marginLeft :"190px",
   backgroundColor: '#222',
   color: '#fff',

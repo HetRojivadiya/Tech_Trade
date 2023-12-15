@@ -1,46 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Indicators = () => {
-  const [data, setData] = useState({});
-  const [filterValue, setFilterValue] = useState('all');
+const Indicators = ({data,filterValue,handleFilterChange,filteredDataKeys}) => {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://techtrade-indicators-default-rtdb.firebaseio.com/.json");
-        if (!response.ok) {
-          throw new Error('Network response was not ok.');
-        }
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-  
-    fetchData(); // Initial data fetch
-  
-    const interval = setInterval(() => {
-      fetchData(); // Fetch data every 5 minutes
-    }, 5 * 60 * 1000);
-  
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleFilterChange = (event) => {
-    setFilterValue(event.target.value);
-  };
-
-  const filteredDataKeys = Object.keys(data).filter((symbol) => {
-    if (filterValue === 'lessThan30') {
-      return data[symbol]?.RSI < 30;
-    } else if (filterValue === 'greaterThan30AndLessThan60') {
-      return data[symbol]?.RSI >= 30 && data[symbol]?.RSI < 60;
-    } else if (filterValue === 'greaterThanOrEqualTo60') {
-      return data[symbol]?.RSI >= 60;
-    }
-    return true;
-  });
 
   const containerStyle = {
     maxWidth: '1100px',
@@ -114,7 +75,7 @@ const Indicators = () => {
   return (
     <div style={containerStyle}>
       <div style={headerContainerStyle}>
-        <h1 style={{ margin: 0 }}><img src="https://cdn.worldvectorlogo.com/logos/nifty50.svg" width={"180px"}/></h1>
+        <h1 style={{ margin: 0 }}><img src="https://cdn.worldvectorlogo.com/logos/nifty50.svg" alt="Nifty" width={"180px"}/></h1>
         <div>
           <h3 style={{ color: '#fff', marginBottom: '5px' }}>Filter by RSI:</h3>
           <select style={dropdownStyle} value={filterValue} onChange={handleFilterChange}>
@@ -126,7 +87,7 @@ const Indicators = () => {
         </div>
       </div>
       <div style={dataContainerStyle}>
-      {filteredDataKeys.length === 0 ? (
+      {filteredDataKeys && filteredDataKeys.length === 0 ? (
           <NoDataFoundImage/>
         ) : (
         filteredDataKeys.map((symbol) => (

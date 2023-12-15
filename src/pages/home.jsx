@@ -1,9 +1,8 @@
 import "./style.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function Home({ addLike }) {
-  const [stock, setStocks] = useState([]);
-
+  
 
   const stockData = [
     {
@@ -62,32 +61,32 @@ export default function Home({ addLike }) {
     {
       name: "Reliance",
       image: "/images/reliance.png",
-      price: "Rs.1500",
-      change: "-7.70%",
+      price: "Rs.1600", // Increased by Rs.100
+      change: "-5.00%", // Indicates a decrease of 2.70%
     },
     {
       name: "Zomato",
       image: "/images/zomato.png",
-      price: "Rs.1500",
-      change: "-7.70%",
+      price: "Rs.1450", // Decreased by Rs.50
+      change: "-15.00%", // Indicates a decrease of 7.30%
     },
     {
       name: "TATA",
       image: "/images/tata.png",
-      price: "Rs.1500",
-      change: "-7.70%",
+      price: "Rs.1700", // Increased by Rs.200
+      change: "+12.00%", // Indicates an increase of 19.70%
     },
     {
       name: "Adani",
       image: "/images/adani.png",
-      price: "Rs.1500",
-      change: "-7.70%",
+      price: "Rs.1400", // Decreased by Rs.100
+      change: "-20.00%", // Indicates a decrease of 12.30%
     },
     {
       name: "MRF",
       image: "/images/mrf.png",
-      price: "Rs.1500",
-      change: "-7.70%",
+      price: "Rs.1550", // Increased by Rs.50
+      change: "+3.00%", // Indicates an increase of 10.70%
     },
   ];
 
